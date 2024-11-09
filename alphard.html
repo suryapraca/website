@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All New Alphard HEV</title>
+  <link rel="stylesheet" href="style.css">
+      <!--=============== FAVICON ===============-->
+      <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon" class="favicon">
+
+      <!--=============== REMIX ICONS ===============-->
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+      <!--=============== SWIPER CSS ===============-->
+      <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="assets/css/styles.css">
+      <link rel="stylesheet" href="assets/css/myCustom.css">
+      <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+  <style>  
+
+  /* Wrapper untuk gambar dan deskripsi */
+.content-wrapper {
+  display: flex;
+  flex-direction: column; /* Default ke kolom untuk layar kecil */
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Tampilkan dalam dua kolom di layar besar */
+@media (min-width: 768px) {
+  .content-wrapper {
+    flex-direction: row; /* Berdampingan hanya untuk gambar dan deskripsi */
+  }
+
+  .product-gallery, .product-details {
+    flex: 1; /* Membuat gambar dan deskripsi sama lebar */
+  }
+}
+
+/* Footer tetap di bawah dan melebar penuh */
+footer {
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+
+     /* Gaya dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Tombol dropdown */
+  .dropdown-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .dropdown-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Gaya dropdown menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    width: 200px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Menampilkan menu ketika active */
+  .dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Link dalam dropdown */
+  .dropdown-menu a {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  } 
+
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  flex-direction: column; /* Pastikan elemen diatur secara vertikal */
+  align-items: stretch; /* Agar konten melebar secara horizontal */
+  padding: 0; /* Hilangkan padding body agar konten sejajar dengan tepi viewport */
+  min-height: 100vh;
+}
+
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.product-gallery {
+  text-align: center;
+}
+
+#mainImage {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.thumbnail-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.thumbnail-gallery img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.thumbnail-gallery img:hover {
+  border-color: #007bff;
+}
+
+.product-details {
+  padding: 20px;
+  justify-content: center;
+}
+
+.product-details h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #555;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.specs, .features {
+  list-style-type: none;
+  padding-left: 15px;
+}
+
+.specs li, .features li {
+  margin-bottom: 8px;
+}
+
+.inquire-now {
+  display: block;
+  padding: 12px 25px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.inquire-now:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .product-info {
+    flex-direction: row;
+  }
+
+  .product-gallery, .product-details {
+    flex: 1;
+  }
+
+  .thumbnail-gallery {
+    justify-content: flex-start;
+    padding: 0 20px;
+  }
+}
+.color-options {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.color-swatch.selected {
+  border-color: #007bff;
+}
+
+  </style>
+  
+</head>
+<body>
+        <!--==================== HEADER ====================-->
+        <header style="background-color: #f9f9f9;" class="header" id="header">
+            <nav class="nav container">
+                <a href="" class="nav__logo">
+                    <i class="ri"></i>
+                    Toyota Asri Surabaya
+                </a>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#index.html #home" class="nav__link active-link">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="index.html #about" class="nav__link ">About</a>
+                        </li>
+                        <!-- <li class="nav__item">
+                            <a href="#popular" class="nav__link">Rent Car</a>
+                        </li> -->
+                        <li class="nav__item">
+                            <a href="index.html #featured" class="nav__link">New Car</a>
+                        </li>
+                    </ul>
+                    <div class="nav__close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </div>
+    
+                <!-- Togglar Button -->
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+    
+            </nav>
+        </header>
+    
+  <section style="padding-top: 50px;" class="product-info" class="content-wrapper">
+    <div class="product-gallery">
+      <img id="mainImage" src="assets/img/alphard.png" alt="All New Alphard HEV">
+      <div class="thumbnail-gallery">
+        <img src="https://www.toyota.astra.co.id/sites/default/files/2023-08/exterior%20fitur1_13.jpg" alt="Thumbnail 1" onclick="changeImage('https://www.toyota.astra.co.id/sites/default/files/2023-08/exterior%20fitur1_13.jpg')">
+        <img src="https://www.toyota.astra.co.id/sites/default/files/2023-08/interior%20fitur3_13.jpg" alt="Thumbnail 2" onclick="changeImage('https://www.toyota.astra.co.id/sites/default/files/2023-08/interior%20fitur3_13.jpg')">
+        <img src="https://www.toyota.astra.co.id/sites/default/files/2023-08/interior%20fitur1_14.jpg" alt="Thumbnail 3" onclick="changeImage('https://www.toyota.astra.co.id/sites/default/files/2023-08/interior%20fitur1_14.jpg')">
+      </div>
+    </div>
+
+    <div class="product-details">
+      <h2>All New Alphard HEV</h2>
+      <p class="price">Starts from Rp. 1.711.000.000</p>
+      <p class="description">Rasakan kemewahan sejati yang berkelas dengan All-New Alphard HEV, kendaraan hybrid terbaru yang menggabungkan desain premium dan teknologi ramah lingkungan. Dilengkapi dengan mesin hybrid yang efisien, Alphard HEV memberikan pengalaman berkendara yang mulus, hemat bahan bakar, dan ramah lingkungan, tanpa mengurangi kenyamanan dan kemewahannya.</p>
+      
+      <h3>Available Colors</h3>
+      <div class="color-options">
+        <span class="color-swatch" style="background-color: #000;" onclick="changeImage('assets/img/alphard.png')"></span>
+        <span class="color-swatch" style="background-color: #fff; border: 1px solid #ccc;" onclick="changeImage('assets/img/alphardputih.png')"></span>
+      </div>
+      
+      <h3>Harga</h3>
+      <div class="dropdown">
+        <button class="dropdown-button">Pilih Variant</button>
+        <div class="dropdown-menu">
+          <a href="#">2.5 X A/T <BR>1.408.700.000</BR></a>
+          <a href="#">2.5 G A/T <BR>1.627.300.000</BR></a>
+          <a href="#">2.5 HYBRID A/T<BR>1.711.000.000</BR></a>
+        </div>
+      </div>
+
+      <h3>Key Specifications</h3>
+      <ul class="specs">
+        <li>Engine: 2.5L Hybrid</li>
+        <li>Power Output: 190 HP</li>
+        <li>Fuel Efficiency: 15 km/L</li>
+        <li>Seating Capacity: 7</li>
+        <li>Transmission: Automatic</li>
+      </ul>
+
+      <h3>Features</h3>
+      <ul class="features">
+        <li>Touchscreen Infotainment System</li>
+        <li>Adaptive Cruise Control</li>
+        <li>Panoramic Sunroof</li>
+        <li>Automatic Climate Control</li>
+        <li>Advanced Safety Features</li>
+      </ul>
+
+
+
+      <button class="inquire-now">Pesan Sekarang</button>
+    </div>
+  </section>
+ <!--==================== FOOTER ====================-->
+ <footer class="footer section">
+  <div class="shapeX shape__big"></div>
+  <div class="shapeX shape__small"></div>
+
+  <div class="footer__container container grid">
+      <div class="footer__content">
+          <a href="#" class="footer__logo">
+              Toyota Asri Surabaya
+          </a>
+          <p class="footer__description">
+              Pilihan Mobil Toyota Terbaik <br>
+              Dealer Authorized Toyota<br>
+          </p>
+      </div>
+
+
+      <div class="footer__content">
+
+          <h3 class="footer__title">Company </h3>
+
+          <ul class="footer__links">
+              <li>
+                  <a href="#" class="footer__links">About</a>
+              </li>
+              <li>
+                  <a href="#" class="footer__links">Cars</a>
+              </li>
+              <li>
+                  <a href="#" class="footer__links">History</a>
+              </li>
+              <li>
+                  <a href="#" class="footer__links">Shop</a>
+              </li>
+              <li>
+                  <a href="#" class="footer__links"></a>
+              </li>
+          </ul>
+      </div>
+
+      <div class="footer__content">
+          <h3 class="footer__title">Information </h3>
+          <ul class="footer__links">
+              <li>
+                  <a href="#" class="footer__links">Request a quote</a>
+              </li>
+              <li>
+                  <a href="#" class="footer__links">Find a dealer</a>
+              </li>
+              <li>
+                  <a href="#" class="footer__links">Contact us</a>
+              </li>
+              <li>
+                  <a href="#" class="footer__links">Services</a>
+              </li>
+
+          </ul>
+      </div>
+
+      <div class="footer__content">
+          <h3 class="footer__title"> Follow us </h3>
+
+          <ul>
+              <a href="https://api.whatsapp.com/send?phone=6285101811991"  class="footer__social-link">
+                  <i class="ri-whatsapp-line"></i>
+              </a>
+              <a href="" target="_blank" class="footer__social-link">
+                  <i class="ri-instagram-line"></i>
+              </a>
+              <a href="" target="_blank" class="footer__social-link">
+                  <i class="ri-facebook-line"></i>
+              </a>
+          </ul>
+      </div>
+  </div>
+  <span class="footer__copy">
+      &#169; <a target="_blank" href="#" class="footer__dev-link">Toyota Surabaya</a> All rigths
+      reserved
+      <p id="date"></p>
+  </span>
+</footer>
+  
+
+  <script src="script.js"></script>
+  <script>
+    function changeImage(src) {
+  document.getElementById("mainImage").src = src;
+}
+
+function selectColor(color) {
+  // Reset selected class for all color swatches
+  document.querySelectorAll(".color-swatch").forEach(swatch => {
+    swatch.classList.remove("selected");
+  });
+
+  // Set selected class for the clicked color
+  const selectedSwatch = document.querySelector(`.color-swatch[style*='${color}']`);
+  selectedSwatch.classList.add("selected");
+
+  // Change main image based on the selected color
+  let colorImage;
+  switch (color) {
+    case 'black':
+      colorImage = 'assets/img/alphard.png';
+      break;
+    case 'white':
+      colorImage = 'assets/img/alphardputih.png';
+      break;
+    case 'gold':
+      colorImage = 'alphard-gold.jpg';
+      break;
+    default:
+      colorImage = 'assets/img/alphard.png';
+  }
+  changeImage(colorImage);
+}
+
+      // Toggle dropdown menu saat tombol diklik
+  document.querySelector('.dropdown-button').addEventListener('click', function() {
+    const dropdown = this.parentElement;
+    dropdown.classList.toggle('active');
+  });
+
+  // Tutup dropdown jika klik di luar elemen dropdown
+  window.addEventListener('click', function(event) {
+    const dropdown = document.querySelector('.dropdown');
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+  </script>
+</body>
+
+</html>

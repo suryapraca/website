@@ -1,0 +1,5 @@
+{
+    "require": {
+        "blade-ui-kit/blade-ui-kit": "^0.6.2"
+    }
+}
